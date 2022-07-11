@@ -7,7 +7,7 @@ The visualized numbers are labels (cstring as raylib requires) that should alway
 Anyhow, once the mouse cursor is recognized inside the Box area, all the Labels (except for the first one **labelArray[0]**) have their value changed to "93"
 
 ----
-That value come from within the procedure **exportFullMap()** that prints that string into a newly created file, into the dir **res/data/**
+That value come from within the procedure **exportFullMap()** that creates a new File that contains that string. The newly created file uses the pathDir: **res/data/**
 
 ----
 Pressing the 'T' key before and after the mouse hovering into the Box, will show the curret data of the **labelArray**
