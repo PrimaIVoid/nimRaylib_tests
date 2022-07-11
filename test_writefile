@@ -65,7 +65,7 @@ while not windowShouldClose():
     if isKeyPressed(T):
         echo "labelArray: ", labelArray
     if checkCollisionPointRec(Vector2(x: cfloat(mouse.x), y: cfloat(mouse.y)), myRect):
-        exportFullMap("fullMap" & $(1), terrainLayer, objectLayer, entityLayer) # BUG IS HERE
+        exportFullMap("fullMap" & $(1), terrainLayer, objectLayer, entityLayer) # BUG is likely on this proc call
 
     ## DRAWING - 60/s
     beginDrawing()
