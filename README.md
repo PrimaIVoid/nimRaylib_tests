@@ -10,4 +10,4 @@ Anyhow, once the mouse cursor is recognized inside the Box area, all the Labels 
 Pressing the 'T' key before and after the mouse hovering into the Box, will show the curret data of the labelArray
 
 ----
-That value come from within the procedure exportFullMap() that prints that string into a newly created file, into the dir res/data
+That value come from within the procedure **exportFullMap()** that prints that string into a newly created file, into the dir **res/data**
