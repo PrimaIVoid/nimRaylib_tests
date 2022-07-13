@@ -10,4 +10,5 @@ Anyhow, once the mouse cursor is recognized inside the Box area, all the Labels 
 That value come from within the procedure **exportFullMap()** that creates a new File that contains that string. The newly created file uses the pathDir: **res/data/**
 
 ----
-Pressing the 'T' key before and after the mouse hovering into the Box, will show the curret data of the **labelArray**
+Pressing 'T' key will show the default data of **labelArray**, while pressing '1' will call the procedure that produces the bug.
+Pressing 'T' again afterwards will show the data changes into **labelArray**
