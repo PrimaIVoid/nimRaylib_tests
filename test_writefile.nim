@@ -47,7 +47,7 @@ var mouse: Mouse
 let font4 = loadFont("res/fonts/setback.png")
 let myRect = Rectangle(x: 240, y: 120, width: 60, height: 60)
 
-const labelArray = makeLabelArray(40)
+let labelArray = makeLabelArray(40)
 
 var terrainLayer: array[14400, cint]
 for i, k in terrainLayer:
