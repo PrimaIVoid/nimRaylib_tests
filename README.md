@@ -1,6 +1,6 @@
 # nimRaylib_tests
 
-The visual bug can be reproduced by hovering the mouse inside the border of the Blue box
+The visual bug can be reproduced by pressing the key '1'
 
 ----
 The visualized numbers are labels (cstring as raylib requires) that should always remain the same during the execution of the program
