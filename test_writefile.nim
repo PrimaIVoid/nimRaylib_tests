@@ -26,6 +26,14 @@ proc exportFullMap(fileName: string, terrainLayer: array[14400, cint], objectLay
                 s = "93"
     writeFile("res/data/" & fileName & ".txt", s)
 
+func makeLabelArray(size: cint): seq[cstring] =
+    for i in 0..<size:
+        if i == 0: # Starting String-Value should not be '00', but instead '01'
+            result.add("01".cstring)
+        elif i < 9: # Check for numbers 1..8 to add +1 and propend extra '0' to become double Digit
+            result.add(("0" & ($(i+1))).cstring)
+        else: result.add(($(i+1)).cstring)
+
 initWindow(800, 600, "Test Leak")
 
 let txtrTerrain: array[4, Texture2D] = [
@@ -39,13 +47,7 @@ var mouse: Mouse
 let font4 = loadFont("res/fonts/setback.png")
 let myRect = Rectangle(x: 240, y: 120, width: 60, height: 60)
 
-var labelArray: array[40, cstring]
-for i, k in labelArray:
-    if i == 0: # Starting String-Value should not be '00', but instead '01'
-        labelArray[i] = "01".cstring
-    elif i < 9: # Check for numbers 1..8 to add +1 and propend extra '0' to become double Digit
-        labelArray[i] = ("0" & ($(i+1))).cstring
-    else: labelArray[i] = ($(i+1)).cstring
+const labelArray = makeLabelArray(40)
 
 var terrainLayer: array[14400, cint]
 for i, k in terrainLayer:
@@ -64,7 +66,7 @@ while not windowShouldClose():
     mouse.y = getMouseY()
     if isKeyPressed(T):
         echo "labelArray: ", labelArray
-    if checkCollisionPointRec(Vector2(x: cfloat(mouse.x), y: cfloat(mouse.y)), myRect):
+    if isKeyPressed(One):
         exportFullMap("fullMap" & $(1), terrainLayer, objectLayer, entityLayer) # BUG is likely on this proc call
 
     ## DRAWING - 60/s
