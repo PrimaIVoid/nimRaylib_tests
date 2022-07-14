@@ -8,7 +8,7 @@ type
         y: cint
         cell: cint
 
-func drawLabelArray(txtrArray: openArray[Texture2D], label: openarray[cstring], font: Font) =
+func drawLabelArray(txtrArray: openArray[Texture2D], label: openarray[string], font: Font) =
     var counter = 0 # Keep track of every Digit of a single Row
     var row = 0.cfloat
     for i in 0..<txtrArray.len: # Iterate over correct number of Labels (two Digit), based on current Array Length -1 for Empty first Texture
@@ -26,13 +26,13 @@ proc exportFullMap(fileName: string, terrainLayer: array[14400, cint], objectLay
                 s = "93"
     writeFile("res/data/" & fileName & ".txt", s)
 
-func makeLabelArray(size: cint): seq[cstring] =
+func makeLabelArray(size: cint): seq[string] =
     for i in 0..<size:
         if i == 0: # Starting String-Value should not be '00', but instead '01'
-            result.add("01".cstring)
+            result.add("01")
         elif i < 9: # Check for numbers 1..8 to add +1 and propend extra '0' to become double Digit
-            result.add(("0" & ($(i+1))).cstring)
-        else: result.add(($(i+1)).cstring)
+            result.add("0" & ($(i+1)))
+        else: result.add($(i+1))
 
 initWindow(800, 600, "Test Leak")
 
@@ -47,7 +47,7 @@ var mouse: Mouse
 let font4 = loadFont("res/fonts/setback.png")
 let myRect = Rectangle(x: 240, y: 120, width: 60, height: 60)
 
-let labelArray = makeLabelArray(40)
+const labelArray = makeLabelArray(40)
 
 var terrainLayer: array[14400, cint]
 for i, k in terrainLayer:
